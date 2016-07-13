@@ -33,7 +33,11 @@ LineaProCDV.prototype.barcodeStop = function() {
 };
 
 LineaProCDV.prototype.connectionChanged = function(state) {
-    this.connCallback(state + 1);
+    this.connCallback(state);
+};
+
+LineaProCDV.prototype.rfCardDetected = function(data) {
+    alert(data);
 };
 
 LineaProCDV.prototype.onMagneticCardData = function(track1, track2, track3) {

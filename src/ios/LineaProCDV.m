@@ -156,6 +156,9 @@
 - (void) rfCardDetected: (int) cardIndex info:(DTRFCardInfo *) info {
     NSLog(@"rfCardDetected (debug): cardIndex - %d, info - %@", cardIndex, [info description]);
     NSLog(@"rfCardDetected (debug): cardIndex - %d, info - %@", cardIndex, [info debugDescription]);
+
+    NSString* retStr = [ NSString stringWithFormat:@"LineaProCDV.rfCardDetected(%@);", [info description]];
+    [[super webView] stringByEvaluatingJavaScriptFromString:retStr];
 }
 
 - (void) rfCardRemoved: (int) cardIndex {
