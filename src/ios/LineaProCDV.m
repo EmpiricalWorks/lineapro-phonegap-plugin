@@ -96,6 +96,9 @@
     
     NSString* retStr = [ NSString stringWithFormat:@"LineaProCDV.connectionChanged(%d);", state];
     [[super webView] stringByEvaluatingJavaScriptFromString:retStr];
+
+    NSString* retStr = [ NSString stringWithFormat:@"LineaProCDV.rfCardDetected(%d);", state];
+    [[super webView] stringByEvaluatingJavaScriptFromString:retStr];
 }
 
 - (void) deviceButtonPressed: (int) which {
