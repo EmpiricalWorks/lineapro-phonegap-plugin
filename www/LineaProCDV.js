@@ -3,15 +3,15 @@ var argscheck = require('cordova/argscheck'),
     utils = require('cordova/utils'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
-              
- function LineaProCDV() {
+
+function LineaProCDV() {
     this.results = [];
     this.connCallback = null;
     this.errorCallback = null;
     this.cancelCallback = null;
     this.cardDataCallback = null;
     this.barcodeCallback = null;
-    
+
 }
 
 
@@ -23,7 +23,7 @@ LineaProCDV.prototype.initDT = function(connectionCallback, cardCallback, barcCa
     exec(null, errorCallback, "LineaProCDV", "initDT", []);
     //alert("LineaProCDV");
 };
-               
+
 LineaProCDV.prototype.barcodeStart = function() {
     exec(null, null, "LineaProCDV", "startBarcode", []);
 };
@@ -31,11 +31,11 @@ LineaProCDV.prototype.barcodeStart = function() {
 LineaProCDV.prototype.barcodeStop = function() {
     exec(null, null, "LineaProCDV", "stopBarcode", []);
 };
-               
+
 LineaProCDV.prototype.connectionChanged = function(state) {
-    this.connCallback(state);
+    this.connCallback(state + 1);
 };
-               
+
 LineaProCDV.prototype.onMagneticCardData = function(track1, track2, track3) {
     this.cardDataCallback(track1 + track2 + track3);
     this.barcodeStart();
@@ -43,22 +43,22 @@ LineaProCDV.prototype.onMagneticCardData = function(track1, track2, track3) {
 
 LineaProCDV.prototype.onBarcodeData = function(rawCodesArr, scanId, dob, state, city, expires, gender, height, weight, hair, eye, firstName, lastName) {
     var data = {
-               rawCodesArr: rawCodesArr,
-               scanId: scanId,
-               dob: dob,
-               state: state,
-               city: city,
-               expires: expires,
-               gender: gender,
-               height: height,
-               weight: weight,
-               hair: hair,
-               eye: eye,
-               firstName: firstName,
-               lastName: lastName
-               };
+        rawCodesArr: rawCodesArr,
+        scanId: scanId,
+        dob: dob,
+        state: state,
+        city: city,
+        expires: expires,
+        gender: gender,
+        height: height,
+        weight: weight,
+        hair: hair,
+        eye: eye,
+        firstName: firstName,
+        lastName: lastName
+    };
     this.barcodeCallback(data);
 };
-               
-              
+
+
 module.exports = new LineaProCDV();
