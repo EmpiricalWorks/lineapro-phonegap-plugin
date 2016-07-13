@@ -96,9 +96,6 @@
     
     NSString* retStr = [ NSString stringWithFormat:@"LineaProCDV.connectionChanged(%d);", state];
     [[super webView] stringByEvaluatingJavaScriptFromString:retStr];
-
-    NSString* retStr1 = [ NSString stringWithFormat:@"LineaProCDV.rfCardDetected(%d);", state];
-    [[super webView] stringByEvaluatingJavaScriptFromString:retStr1];
 }
 
 - (void) deviceButtonPressed: (int) which {
@@ -160,7 +157,7 @@
     NSLog(@"rfCardDetected (debug): cardIndex - %d, info - %@", cardIndex, [info description]);
     NSLog(@"rfCardDetected (debug): cardIndex - %d, info - %@", cardIndex, [info debugDescription]);
 
-    NSString* retStr = [ NSString stringWithFormat:@"LineaProCDV.rfCardDetected(%@);", [info description]];
+    NSString* retStr = @"LineaProCDV.rfCardDetected('asdf');";
     [[super webView] stringByEvaluatingJavaScriptFromString:retStr];
 }
 
